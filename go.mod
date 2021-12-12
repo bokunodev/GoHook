@@ -1,3 +1,3 @@
-module github.com/bokunodev/GoHook
+module github.com/bokunodev/gohook
 
 go 1.17

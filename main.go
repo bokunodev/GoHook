@@ -39,9 +39,9 @@ func main() {
 	)
 
 	flag.StringVar(&address, "address", "localhost:8000", "address for server to linten on")
-	flag.StringVar(&command, "command", "", "comamnd to execute")
-	flag.DurationVar(&shutdownTimeout, "shutdown-timeout", 5*time.Second, "shutdown timeout before hanging process get killed")
-	flag.Var(&params, "params", "parameter to be passed to the command, can be used multiple times.")
+	flag.StringVar(&command, "command", "", "the command to execute")
+	flag.DurationVar(&shutdownTimeout, "shutdown-timeout", 5*time.Second, "time limit, before hanging process get killed")
+	flag.Var(&params, "params", "parameter to be passed to the command, could be used multiple times.")
 	flag.StringVar(&secret, "secret", "", "Github webhook secret")
 	flag.StringVar(&event, "event", "push", "Github event type")
 	flag.StringVar(&ref, "ref", "refs/heads/main", "Github ref")
