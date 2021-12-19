@@ -61,8 +61,8 @@ func main() {
 		return hmac.New(sha256.New, []byte(secret))
 	}
 
-	var restart = make(chan struct{}, 1)
-	var stop = make(chan struct{}, 1)
+	restart := make(chan struct{}, 1)
+	stop := make(chan struct{}, 1)
 
 	go runner(restart, stop, command, params)
 
@@ -87,7 +87,7 @@ func main() {
 }
 
 func handler(restart chan<- struct{}, getHasher func() hash.Hash, event, ref string) http.Handler {
-	return http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
+	return http.HandlerFunc(func(_ http.ResponseWriter, r *http.Request) {
 		eventType := r.Header.Get(XGithubEventHeader)
 		signature := r.Header.Get(XHubSignature256Header)
 
